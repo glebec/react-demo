@@ -33,7 +33,10 @@ const addStudent = studentData => {
 };
 
 router.get('/', (req, res) => {
-  res.json(students);
+  // artificially slowed down to demo front-end statefulness
+  setTimeout(() => {
+    res.json(students);
+  }, 2000);
 });
 
 router.get('/:id', (req, res) => {
@@ -42,5 +45,5 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   addStudent(req.body);
-  res.sendStatus(201);
+  res.json(req.body);
 });
